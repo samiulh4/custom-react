@@ -10,9 +10,13 @@ const anchorElement = {
 function renderElement(element, container)
 {
     const domElement = document.createElement(element.type)
+
     domElement.innerHTML = element.title
-    domElement.setAttribute('href', element.props.href)
-    domElement.setAttribute('target', element.props.target)
+    //domElement.setAttribute('href', element.props.href)
+    //domElement.setAttribute('target', element.props.target)
+    for(const prop in element.props){
+        domElement.setAttribute(prop, element.props[prop])
+    }
 
     container.appendChild(domElement)
 }
@@ -20,5 +24,6 @@ function renderElement(element, container)
 const root = document.querySelector('#root')
 
 renderElement(anchorElement, root)
+
 
 
